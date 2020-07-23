@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+      - id: addOn-service
+        uri: lb://addOn-service
+        predicates:
+        - Path= /addOns/**
+      
+      - id: car-service
+        uri: lb://car-service
+        predicates:
+        - Path= /car/**
+      
+      - id: customer-service
+        uri: lb://customer-service
+        predicates:
+        - Path= /customer/**
+
+      - id: login-service
+        uri: lb://login-service
+        predicates:
+        - Path= /login/**
+        
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+        - Path= /order/**
+
+      - id: payment-service
+        uri: lb://payment-service
+        predicates:
+        - Path= /payment/**
+        
+      - id: report-service
+        uri: lb://report-service
+        predicates:
+        - Path= /generateReport/**
+        
+      - id: carPlan-service
+        uri: lb://carPlan-service
+        predicates:
+        - Path= /servicePlan/**
+        
+      - id: washer-service
+        uri: lb://washer-service
+        predicates:
+        - Path= /washer/**
+        
+      - id: report-service
+        uri: lb://report-service
+        predicates:
+        - Path= /generateReport/**
+
+server:
+  port: 8888
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
