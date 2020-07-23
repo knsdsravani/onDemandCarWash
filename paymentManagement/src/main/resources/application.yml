@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: PAYMENT-SERVICE
+    
+server:
+  port: 8087
+ 
+paytm:
+  payment:
+    sandbox:
+      merchant-id: JymsxM57267998042321
+      merchant-key: UWXl5DBKDgB4x_AZ
+      website: WEBSTAGING
+      industry-type-id: Retail
+      channel-id: WEB
+      paytm-url: https://securegw-stage.paytm.in/order/process
+      callbackUrl: http://localhost:8085/pgresponse
+      details:
+        MID: ${paytm.payment.sandbox.merchantid}
+        CHANNEL_ID: ${paytm.payment.sandbox.channelid}
+        INDUSTRY_TYPE_ID: ${paytm.payment.sandbox.industrytypeid}
+        WEBSITE: ${paytm.payment.sandbox.website}
+        CALLBACK_URL: ${paytm.payment.sandbox.callbackUrl}
+  mobile: 9603672264
+  email: sravanikancharla1996@gmail.com
+  
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
